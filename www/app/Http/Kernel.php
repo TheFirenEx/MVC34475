@@ -4,6 +4,7 @@ namespace Http;
 
 use Exception;
 use Http\Controllers\CategoryController;
+use Http\Requests\CategoryRequest;
 use Http\Requests\Request;
 
 class Kernel
@@ -13,6 +14,11 @@ class Kernel
         try {
             $request = new Request();
             switch ($request->path()) {
+                case '/add':
+                    (new CategoryController())->add(
+                        new CategoryRequest()
+                    );
+                    break;
                 default:
                     (new CategoryController())->index();
             }

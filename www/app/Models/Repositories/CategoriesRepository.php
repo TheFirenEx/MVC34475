@@ -20,7 +20,26 @@ class CategoriesRepository extends Repository
 
     public function insert(Model $model): int
     {
-        // TODO: zapisywanie kategorii do bazy
-        return -1;
+        if (!$model instanceof Category) {
+            return -1;
+        }
+        try {
+            $query = 'INSERT INTO `' . $this->table . '`';
+            $query .= '(`name`)';
+            $query .= ' VALUES (:name)';
+            $stmt = $this->handle->getHandle()->prepare($query);
+            $stmt->bindValue(
+                ':name',
+                $model->name,
+                PDO::PARAM_STR
+            );
+            if ($stmt->execute()) {
+                return $this->handle->getHandle()
+                    ->lastInsertId();
+            }
+            return -1;
+        } catch (PDOException $e) {
+            throw new DatabaseException($e);
+        }
     }
 }
