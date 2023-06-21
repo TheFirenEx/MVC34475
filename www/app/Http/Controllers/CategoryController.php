@@ -2,15 +2,26 @@
 
 namespace Http\Controllers;
 
+use Database\PdoHandle;
 use Helpers\AbsoluteUrl;
 use Http\Controllers\Controller;
+use Models\Repositories\CategoriesRepository;
 
 class CategoryController extends Controller
 {
+    private $categoryRepository;
+
+    public function __construct()
+    {
+        $this->categoryRepository = new CategoriesRepository(
+            new PdoHandle()
+        );
+    }
+
     public function index()
     {
-        d(AbsoluteUrl::get('categories'));
-        d(route('categories'));
-        d(config('app.name'));
+        d(
+            $this->categoryRepository->all()
+        );
     }
 }
