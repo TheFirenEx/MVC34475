@@ -2,12 +2,14 @@
 
 namespace Http\Controllers;
 
+use Helpers\AbsoluteUrl;
 use Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
     public function index()
     {
-        echo 'CategoryController::index()';
+        d(AbsoluteUrl::get('categories'));
+        d(route('categories'));
     }
 }
