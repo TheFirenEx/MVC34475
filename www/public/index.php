@@ -1,9 +1,9 @@
 <?php
 
-use Http\Controllers\Controller;
+use \Http\Controllers\CategoryController;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$ob = new Controller();
+$ob = new CategoryController();
 d($ob);
-$ob->test();
+$ob->index();

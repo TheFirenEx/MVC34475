@@ -2,10 +2,11 @@
 
 namespace Http\Controllers;
 
-class Controller
+abstract class Controller
 {
-    public function test()
+    public function redirect(string $url)
     {
-        echo "Controller:test()";
+        // TODO: uwzględnić adresy względne
+        header('Location: ' . $url);
     }
 }
