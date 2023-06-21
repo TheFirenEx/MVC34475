@@ -4,15 +4,18 @@ namespace Http;
 
 use Exception;
 use Http\Controllers\CategoryController;
+use Http\Requests\Request;
 
 class Kernel
 {
     public function run()
     {
         try {
-            // TODO: prosty routing
-            $c = new CategoryController();
-            $c->index();
+            $request = new Request();
+            switch ($request->path()) {
+                default:
+                    (new CategoryController())->index();
+            }
         } catch (Exception $e) {
             echo $e->getCode() . ': ' . $e->getMessage();
         }
