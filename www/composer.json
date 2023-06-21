@@ -4,6 +4,7 @@
     },
     "autoload": {
         "files": [
+            "./helpers/config.php",
             "./helpers/route.php"
         ],
         "psr-4": {

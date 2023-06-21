@@ -11,5 +11,6 @@ class CategoryController extends Controller
     {
         d(AbsoluteUrl::get('categories'));
         d(route('categories'));
+        d(config('app.name'));
     }
 }
