@@ -6,7 +6,9 @@ abstract class Controller
 {
     public function redirect(string $url)
     {
-        // TODO: uwzględnić adresy względne
+        if (strpos($url, 'http') === false) {
+            $url = route($url);
+        }
         header('Location: ' . $url);
     }
 }
