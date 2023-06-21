@@ -10,5 +10,6 @@ class CategoryController extends Controller
     public function index()
     {
         d(AbsoluteUrl::get('categories'));
+        d(route('categories'));
     }
 }

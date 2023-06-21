@@ -3,6 +3,9 @@
         "kint-php/kint": "^5.0"
     },
     "autoload": {
+        "files": [
+            "./helpers/route.php"
+        ],
         "psr-4": {
             "": "app/"
         }
