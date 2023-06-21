@@ -9,6 +9,11 @@ require_once(__DIR__ . '/header.html.php')
     }
     ?>
 </ul>
+<h2><?= $this->addTitle ?></h2>
+<form action="<?= route('add') ?>" method="POST">
+    <input name="category_name">
+    <button type="submit"><?= $this->addButton ?></button>
+</form>
 <?php
 require_once(__DIR__ . '/footer.html.php')
 ?>
