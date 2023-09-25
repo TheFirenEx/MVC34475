@@ -1,38 +1,37 @@
 # MVC
 
-Projekt prezentujący wykorzystanie wzorca projektowego MVC do budowy prostej aplikacji internetowej w języku PHP.
+Projekt prezentujący wykorzystanie wzorca projektowego MVC do obiektowej implementacji prostej aplikacji internetowej w języku PHP.
 
 # Jak uruchomić projekt
 
 ## Odtworzenie katalogu vendor
-	docker run --rm \
-        -u "$(id -u):$(id -g)" \
-        -v $(pwd):/opt \
-        -w /opt \
-        laravelsail/php81-composer:latest \
-        composer install --ignore-platform-reqs
+W katalogu `www` projektu należy uruchomić z linii komend skrypt `install_vendor.sh` wykonując polecenie:
+
+    ./install_vendor.sh
 
 ## Plik konfiguracyjny env.ini w katalogu config
-Należy stworzyć plik konfiguracyjny aplikacji o nazwie env.ini w katalogu ./config
-
-    [APP]
-    name = 'Aplikacja'
-
-    [DATABASE]
-    database = 'mvc'
-    hostname = 'db'
-    type = 'mysql'
-    port = '3306'
-    user = 'root'
-    password = 'tajne hasło'
-    charset = 'utf8'
+W katalogu `./www/config` znajduje się plik konfiguracyjny aplikacji o nazwie `env.ini`, który w zależności od potrzeb można zmodyfikować.
 
 ## Uruchomienie kontenerów
+Z katalogu głównego aplikacji (`./`) należy wykonać polecenie:
+
     docker compose up -d        
 
-# Praca z kontenerami
+Na podstawie pliku konfiguracyjnego `docker-compose.yml` zostaną uruchomione trzy kontenery:
 
-## Uruchomienie kontenerów
+- kontener aplikacji (nasłuchujący na porcie `:80`),
+- kontener bazy danych (nasłuchujący na porcie `:3306`),
+- kontener aplikacji `phpmyadmin` (nasłuchujący na porcie `:8000`).
+
+## Odtworzenie bazy danych
+W celu odtworzenie testowej bazy danych należy uruchomić aplikację `phpmyadmin`, dostępną pod adresem `http:\\localhost:8000`. Zalogować się do aplikacji z użyciem danych dostępowych, skonfigurowanych w pliku `env.ini` (domyślnie, `użytkownik:  user`, `hasło: 123456`). Wybrać bazę danych aplikacji (domyślnie `mvc`). Przejść do zakładki `SQL`. W pole `Wykonanie zapytania/zapytań SQL do bazy danych mvc:` wkleić zawartość pliku `./www/migrations/categories.sql` i kliknąć `wykonaj`.
+
+## Uruchomienie aplikacji
+Aplikacja dostępna jest pod adresem `http://localhost`.
+
+## Praca z kontenerami
+
+### Uruchomienie kontenerów
     docker compose up -d
 
 ### Podgląd listy kontenerów
@@ -46,5 +45,10 @@ Należy stworzyć plik konfiguracyjny aplikacji o nazwie env.ini w katalogu ./co
 
     docker exec mvc-www-1 composer require kint-php/kint
 
-## Zatrzymanie kontenerów
-    docker down
+### Zatrzymanie kontenerów
+    docker compose down
+
+### Zatrzymanie kontenerów wraz z usunięciem wolumenów
+    docker compose down -v
+
+*Spowoduje to usunięcie bazy danych.
