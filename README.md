@@ -10,9 +10,16 @@ W katalogu `www` projektu należy uruchomić z linii komend skrypt `install_vend
     ./install_vendor.sh
 
 ## Plik konfiguracyjny env.ini w katalogu config
-W katalogu `./www/config` znajduje się plik konfiguracyjny aplikacji o nazwie `env.ini`, który w zależności od potrzeb można zmodyfikować.
+W pliku `.env` znajdują się parametry konfiguracyjne aplikacji, który w zależności od potrzeb można zmodyfikować.
 
 ## Uruchomienie kontenerów
+
+### Uruchamianie VS Code z poziomu kontenera aplikacji
+Uruchomienie wymaga zainstalowania rozszerzenia Dev Containers dla VS Code (https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers). Mając otworzony projekt w VS Code z poziomu WSL należy otworzyć paletę poleceń (skrót `Ctrl + Shift + P`) i uruchomić polecenie:
+
+    DevContainers: Reopen in Container
+
+### Uruchamianie VS Code z poziomu WSL
 Z katalogu głównego aplikacji (`./`) należy wykonać polecenie:
 
     docker compose up -d        
