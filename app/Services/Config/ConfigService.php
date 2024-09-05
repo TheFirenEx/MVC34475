@@ -13,8 +13,8 @@ namespace Services\Config;
  */
 class ConfigService
 {
-    const FILENAME = 'env.ini';
-    const PATH = __DIR__ . '/../../../config/';
+    const FILENAME = '.env';
+    const PATH = __DIR__ . '/../../../';
     const DELIMITER = '.';
 
     private static $singleton = null;
@@ -29,9 +29,7 @@ class ConfigService
         );
     }
 
-    private function __clone()
-    {
-    }
+    private function __clone() {}
 
     public static function getInstance()
     {
