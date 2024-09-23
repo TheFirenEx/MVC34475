@@ -5,11 +5,11 @@ Projekt prezentujący wykorzystanie wzorca projektowego MVC do obiektowej implem
 # Jak uruchomić projekt
 
 ## Odtworzenie katalogu vendor
-W katalogu `www` projektu należy uruchomić z linii komend skrypt `install_vendor.sh` wykonując polecenie:
+W katalogu projektu należy uruchomić z linii komend skrypt `install_vendor.sh` wykonując polecenie:
 
     ./install_vendor.sh
 
-## Plik konfiguracyjny env.ini w katalogu config
+## Plik konfiguracyjny env.ini
 W pliku `.env` znajdują się parametry konfiguracyjne aplikacji, który w zależności od potrzeb można zmodyfikować.
 
 ## Uruchomienie kontenerów
@@ -31,7 +31,7 @@ Na podstawie pliku konfiguracyjnego `docker-compose.yml` zostaną uruchomione tr
 - kontener aplikacji `phpmyadmin` (nasłuchujący na porcie `:8000`).
 
 ## Odtworzenie bazy danych
-W celu odtworzenie testowej bazy danych należy uruchomić aplikację `phpmyadmin`, dostępną pod adresem `http:\\localhost:8000`. Zalogować się do aplikacji z użyciem danych dostępowych, skonfigurowanych w pliku `env.ini` (domyślnie, `użytkownik:  user`, `hasło: 123456`). Wybrać bazę danych aplikacji (domyślnie `mvc`). Przejść do zakładki `SQL`. W pole `Wykonanie zapytania/zapytań SQL do bazy danych mvc:` wkleić zawartość pliku `./www/migrations/categories.sql` i kliknąć `wykonaj`.
+W celu odtworzenie testowej bazy danych należy uruchomić aplikację `phpmyadmin`, dostępną pod adresem `http:\\localhost:8000`. Zalogować się do aplikacji z użyciem danych dostępowych, skonfigurowanych w pliku `docker-compose.yml` (domyślnie, `użytkownik:  user`, `hasło: 123456`). Wybrać bazę danych aplikacji (domyślnie `mvc`). Przejść do zakładki `SQL`. W pole `Wykonanie zapytania/zapytań SQL do bazy danych mvc:` wkleić zawartość pliku `./www/migrations/categories.sql` i kliknąć `wykonaj`.
 
 ## Uruchomienie aplikacji
 Aplikacja dostępna jest pod adresem `http://localhost`.
