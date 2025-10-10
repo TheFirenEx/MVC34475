@@ -3,9 +3,10 @@
 namespace Http;
 
 use Exception;
-use Http\Controllers\CategoryController;
-use Http\Requests\CategoryRequest;
 use Http\Requests\Request;
+use Http\Requests\CategoryRequest;
+use Http\Controllers\ProductController;
+use Http\Controllers\CategoryController;
 
 class Kernel
 {
@@ -18,6 +19,9 @@ class Kernel
                     (new CategoryController())->add(
                         new CategoryRequest()
                     );
+                    break;
+                    case '/products':
+                        (new ProductController())->index();
                     break;
                 default:
                     (new CategoryController())->index();
