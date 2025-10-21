@@ -1,14 +1,14 @@
 {
-    "require": {
-        "kint-php/kint": "^5.0"
-    },
-    "autoload": {
-        "files": [
-            "./helpers/config.php",
-            "./helpers/route.php"
-        ],
-        "psr-4": {
-            "": "app/"
-        }
+  "require": {
+    "kint-php/kint": "^5.0"
+  },
+  "autoload": {
+    "files": [
+      "./helpers/config.php",
+      "./helpers/route.php"
+    ],
+    "psr-4": {
+      "": "app/"
     }
+  }
 }
