@@ -5,7 +5,7 @@ require_once(__DIR__ . '/header.html.php')
 <ul>
     <?php
     foreach ($this->products as $product) {
-        echo "<li>$product->id - $product->name</li>";
+        echo "<li>$product->id - $product->name - $product->price USD</li>";
     }
     ?>
 </ul>
